@@ -21,6 +21,7 @@ public class PlayerLife : MonoBehaviour
         if (collision.gameObject.CompareTag("Trap"))
         {
             currentHealth--;
+            anim.SetTrigger("Hit");
             if(currentHealth == 0)
             {
                 Die();

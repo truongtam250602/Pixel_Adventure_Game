@@ -8,28 +8,27 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private BoxCollider2D coll;
     private Animator anim;
-   public static PlayerController Instance;
+    private float dirX;
+    public float dirY;
 
     [Header("Move Settings")]
     [SerializeField] private float jumpForce = 16.0f;
     [SerializeField] private float speed = 8.0f;
     [SerializeField] private LayerMask jumpableGround;
 
-    private int orangesCollected = 0;
+    private bool doubleJump;
+    private bool isSliding;
+    private bool wallJumping;
+    [Header("Wall Jump Settings")]
+    [SerializeField] private Transform wallCheck;
+    [SerializeField] private float wallSlidingSpeed;
+    [SerializeField] private float wallJumpingDuration;
+    [SerializeField] private Vector2 wallJumpForce;
+    
 
-    private enum MovementState { idle, running, jumping, falling}
 
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
+    private enum MovementState { idle, running, jumping, falling, sliding}
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -43,35 +42,68 @@ public class PlayerController : MonoBehaviour
         PlayerMovement();
     }
 
+    private void FixedUpdate()
+    {
+        if (isSliding)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+        }
+        if(wallJumping)
+        {
+            rb.velocity = new Vector2(-dirX * wallJumpForce.x, wallJumpForce.y);
+        }
+    }
     void PlayerMovement()
     {
         MovementState state;
-        float dirX = Input.GetAxis("Horizontal");
+        dirX = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(dirX * speed, rb.velocity.y);
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        
+
+        // wall jump set is Sliding value
+        if(IsWallTouch() && !IsGrounded() && dirX != 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            isSliding = true;
+        }
+        else
+        {
+            isSliding = false;
+        }
+        // jump
+        if (Input.GetButtonDown("Jump"))
+        {
+            //jump on grounded
+            if(IsGrounded())
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                doubleJump = true;
+            }
+            else if (IsWallTouch()) // jump wall
+            {
+                wallJumping = true;
+                Invoke("StopWallJump", wallJumpingDuration);
+                doubleJump = true;
+            }
+            else if (doubleJump)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                anim.SetTrigger("Double Jump");
+                doubleJump = false;
+            }
+            
         }
 
         if (dirX != 0)
         {
             state = MovementState.running;
-            if (dirX < 0)
-            {
-                transform.localScale = new Vector3(-1, 1, 1);
-            }
-            else if (dirX > 0)
-            {
-                transform.localScale = Vector3.one;
-            }
         }
         else
         {
             state = MovementState.idle;
         }
         
-        if(rb.velocity.y < -0.01f)
+        if(rb.velocity.y < -0.01f && !IsWallTouch())
         {
             state = MovementState.falling;
         }
@@ -79,8 +111,14 @@ public class PlayerController : MonoBehaviour
         {
             state = MovementState.jumping;
         }
-
+        else if (rb.velocity.y < -0.01f && IsWallTouch())
+        {
+            state = MovementState.sliding;
+        }
+        
         anim.SetInteger("State", (int)state);
+
+        Flip();
     }
 
     private bool IsGrounded()
@@ -88,4 +126,23 @@ public class PlayerController : MonoBehaviour
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 
+    private bool IsWallTouch()
+    {
+        return Physics2D.OverlapBox(wallCheck.position, new Vector2(.2f, 1f), 0, jumpableGround);
+    }
+    private void StopWallJump()
+    {
+        wallJumping = false;
+    }
+    private void Flip()
+    {
+        if (dirX < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (dirX > 0)
+        {
+            transform.localScale = Vector3.one;
+        }
+    }
 }

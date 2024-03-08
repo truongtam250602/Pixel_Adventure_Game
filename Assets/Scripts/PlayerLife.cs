@@ -5,27 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
-    private Animator anim;
+    public Animator anim;
     private Rigidbody2D rb;
     [SerializeField] private int currentHealth;
     [SerializeField] private int maxHealth = 3;
+    private void Awake()
+    {
+        currentHealth = maxHealth;
+    }
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        currentHealth = maxHealth;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // if player on trigger trap(normal such as spike)
         if (collision.gameObject.CompareTag("Trap"))
         {
-            currentHealth--;
-            anim.SetTrigger("Hit");
-            if(currentHealth == 0)
-            {
-                Die();
-            }
+            ChangeHealth(-1);
         }
     }
 
@@ -34,6 +33,19 @@ public class PlayerLife : MonoBehaviour
 
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("Death");
+    }
+
+    public void ChangeHealth(int value)
+    {
+        if(value < 0)
+        {
+            anim.SetTrigger("Hit");
+        }
+        currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
+        if (currentHealth == 0)
+        {
+            Die();
+        }
     }
 
     private void RestartLevel()

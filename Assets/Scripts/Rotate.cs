@@ -9,13 +9,6 @@ public class Rotate : MonoBehaviour
 
     void Update()
     {
-        if (currentWayPointIndex == 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else if (currentWayPointIndex == (wayPoints.Length - 1))
-        {
-            transform.localScale = Vector3.one;
-        }
+        
     }
 }

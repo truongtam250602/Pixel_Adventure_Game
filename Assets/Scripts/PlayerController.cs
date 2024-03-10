@@ -82,8 +82,8 @@ public class PlayerController : MonoBehaviour
             else if (IsWallTouch()) // jump wall
             {
                 wallJumping = true;
-                Invoke("StopWallJump", wallJumpingDuration);
                 doubleJump = true;
+                Invoke("StopWallJump", wallJumpingDuration);
             }
             else if (doubleJump)
             {
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
             state = MovementState.idle;
         }
         
-        if(rb.velocity.y < -0.01f && !IsWallTouch())
+        if(rb.velocity.y < -0.01f && !IsWallTouch() && !IsGrounded())
         {
             state = MovementState.falling;
         }

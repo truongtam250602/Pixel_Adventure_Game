@@ -6,7 +6,6 @@ public class FireTrap : MonoBehaviour
 {
     private Animator anim;
     private bool collisioned;
-
     [SerializeField] private int damage;
     [SerializeField] private float timeDelay;
     [SerializeField] private float timeActive;
@@ -40,4 +39,5 @@ public class FireTrap : MonoBehaviour
         anim.SetBool("On", false);
         fireZone.SetActive(false);
     }
+   
 }

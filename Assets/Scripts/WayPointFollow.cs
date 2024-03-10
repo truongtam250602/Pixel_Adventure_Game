@@ -7,7 +7,7 @@ public class WayPointFollow : MonoBehaviour
     [SerializeField] private GameObject[] wayPoints;
     [SerializeField] private float speed = 2f;
     private int currentWayPointIndex = 0;
-    private bool isReversed = false;
+    [SerializeField] private bool isReversed;
 
     private void Update()
     {
@@ -22,7 +22,7 @@ public class WayPointFollow : MonoBehaviour
                     isReversed = true;
                     if (gameObject.CompareTag("Trap"))
                     {
-                        transform.localScale = Vector3.one;
+                        transform.localScale = new Vector3(-transform.localScale.x, 1, 1);
                     }
                 }
             }
@@ -35,7 +35,7 @@ public class WayPointFollow : MonoBehaviour
                     isReversed = false;
                     if (gameObject.CompareTag("Trap"))
                     {
-                        transform.localScale = new Vector3(-1, 1, 1);
+                        transform.localScale = new Vector3(-transform.localScale.x, 1, 1);
                     }
                 }
             }

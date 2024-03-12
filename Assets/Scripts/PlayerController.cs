@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 16.0f;
     [SerializeField] private float speed = 8.0f;
     [SerializeField] private LayerMask jumpableGround;
+    [SerializeField] private ParticleSystem dushParticle;
 
     private bool doubleJump;
     private bool isSliding;
@@ -97,10 +98,12 @@ public class PlayerController : MonoBehaviour
         if (dirX != 0)
         {
             state = MovementState.running;
+            dushParticle.gameObject.SetActive(true);
         }
         else
         {
             state = MovementState.idle;
+            dushParticle.gameObject.SetActive(false);
         }
         
         if(rb.velocity.y < -0.01f && !IsWallTouch() && !IsGrounded())

@@ -22,9 +22,17 @@ public class PlayerLife : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // if player on trigger trap(normal such as spike)
-        if (collision.gameObject.CompareTag("Trap"))
+        if (collision.gameObject.CompareTag("Trap")) // hit 
         {
             ChangeHealth(-1);
+        }
+        else if (collision.gameObject.CompareTag("Heart")) // collect heart
+        {
+            if(currentHealth < maxHealth)
+            {
+                ChangeHealth(1);
+                Destroy(collision.gameObject);
+            }
         }
     }
 

@@ -5,25 +5,28 @@ using UnityEngine;
 public class FallingPlatForm : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField] private float timeDelay;
-    [SerializeField] private float timeDestroy;
-
+    private bool falling = false;
+    [SerializeField] private float timeFallDelay;
+    [SerializeField] private float timeDestroyDelay;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (falling)
         {
-            Invoke("Fall", timeDelay);
-            Destroy(gameObject, timeDestroy);
+            return;
+        }
+        if (collision.transform.CompareTag("Player"))
+        {
+            StartCoroutine(Fall());
         }
     }
-
-    private void Fall()
+    private IEnumerator Fall()
     {
-        rb.isKinematic = false;
+        falling = true;
+        yield return new WaitForSeconds(timeFallDelay);
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
 }

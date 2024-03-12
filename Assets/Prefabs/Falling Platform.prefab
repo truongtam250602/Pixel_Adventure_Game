@@ -108,10 +108,10 @@ GameObject:
   - component: {fileID: 2786294054904468969}
   - component: {fileID: 7793535256842556506}
   - component: {fileID: 3621550533156790419}
-  - component: {fileID: 8346523767568374809}
   - component: {fileID: 3714916680723504275}
   - component: {fileID: 3587903009307835571}
   - component: {fileID: 5034104299231830300}
+  - component: {fileID: 5167366924407930952}
   m_Layer: 6
   m_Name: Falling Platform Sprite
   m_TagString: Untagged
@@ -239,7 +239,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.16186547}
+  m_Offset: {x: 0.0039601326, y: 0.14780593}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -250,27 +250,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8891964, y: 0.28414965}
+  m_Size: {x: 1.871192, y: 0.25196505}
   m_EdgeRadius: 0
---- !u!251 &8346523767568374809
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6659662301964732803}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!114 &3714916680723504275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,6 +308,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3615ad71cb4a5d24bb08ac8b36852b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 3587903009307835571}
-  timeDelay: 0.5
-  timeDestroy: 1
+  timeFallDelay: 0.1
+  timeDestroyDelay: 2
+--- !u!251 &5167366924407930952
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659662301964732803}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1

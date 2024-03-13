@@ -12,7 +12,7 @@ public class FallingPlatForm : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (falling)
         {
@@ -28,5 +28,6 @@ public class FallingPlatForm : MonoBehaviour
         falling = true;
         yield return new WaitForSeconds(timeFallDelay);
         rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.gravityScale = 2.0f;
     }
 }

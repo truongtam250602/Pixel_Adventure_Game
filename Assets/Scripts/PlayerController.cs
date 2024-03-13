@@ -25,8 +25,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float wallSlidingSpeed;
     [SerializeField] private float wallJumpingDuration;
     [SerializeField] private Vector2 wallJumpForce;
-    
 
+    [Header("Sound Effect Settings")]
+    [SerializeField] private AudioSource jumpAudio;
 
     private enum MovementState { idle, running, jumping, falling, sliding}
 
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
         if(wallJumping)
         {
             rb.velocity = new Vector2(-dirX * wallJumpForce.x, wallJumpForce.y);
+            jumpAudio.Play();
         }
     }
     void PlayerMovement()
@@ -78,6 +80,7 @@ public class PlayerController : MonoBehaviour
             if(IsGrounded())
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                jumpAudio.Play();
                 doubleJump = true;
             }
             else if (IsWallTouch()) // jump wall
@@ -89,6 +92,7 @@ public class PlayerController : MonoBehaviour
             else if (doubleJump)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                jumpAudio.Play();
                 anim.SetTrigger("Double Jump");
                 doubleJump = false;
             }

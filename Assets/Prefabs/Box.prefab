@@ -542,11 +542,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 5747730374640984378}
+  jumpForce: 10
   spRenderer: {fileID: 4760593813878589030}
   coll: {fileID: 1200239331200590832}
   brokenParts: {fileID: 8918620642133622829}
   lifes: 1
   BoxCollider: {fileID: 6383233804887444554}
+  itemCollector: {fileID: 0}
 --- !u!1 &4877932544107164090
 GameObject:
   m_ObjectHideFlags: 0

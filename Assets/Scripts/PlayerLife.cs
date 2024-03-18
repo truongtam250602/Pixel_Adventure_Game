@@ -9,9 +9,12 @@ public class PlayerLife : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private int currentHealth;
     [SerializeField] private int maxHealth = 3;
+
+    AudioManager audioManager;
     private void Awake()
     {
         currentHealth = maxHealth;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     void Start()
     {
@@ -32,6 +35,7 @@ public class PlayerLife : MonoBehaviour
             {
                 ChangeHealth(1);
                 Destroy(collision.gameObject);
+                audioManager.PlaySFX(audioManager.collectHeartAudio);
             }
         }
     }

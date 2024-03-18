@@ -8,7 +8,12 @@ public class Trampoline : MonoBehaviour
     private Animator anim;
     [SerializeField] private float jumpForce = 2f;
     [SerializeField] private AudioSource soundTrampoline;
-    // Start is called before the first frame update
+
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -26,6 +31,7 @@ public class Trampoline : MonoBehaviour
     {
         anim.SetBool("Jump", true);
         soundTrampoline.Play();
+        audioManager.PlaySFX(audioManager.trampolineAudio);
         yield return new WaitForSeconds(0.5f);
         anim.SetBool("Jump", false);
     }

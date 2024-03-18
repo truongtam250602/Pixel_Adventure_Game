@@ -26,10 +26,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float wallJumpingDuration;
     [SerializeField] private Vector2 wallJumpForce;
 
-    [Header("Sound Effect Settings")]
-    [SerializeField] private AudioSource jumpAudio;
-
     private enum MovementState { idle, running, jumping, falling, sliding}
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     void Start()
     {
@@ -53,7 +56,6 @@ public class PlayerController : MonoBehaviour
         if(wallJumping)
         {
             rb.velocity = new Vector2(-dirX * wallJumpForce.x, wallJumpForce.y);
-            jumpAudio.Play();
         }
     }
     void PlayerMovement()
@@ -76,27 +78,29 @@ public class PlayerController : MonoBehaviour
         // jump
         if (Input.GetButtonDown("Jump"))
         {
-            //jump on grounded
-            if(IsGrounded())
+            if (doubleJump && !IsGrounded())
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                jumpAudio.Play();
+                anim.SetTrigger("Double Jump");
+                doubleJump = false;
+                audioManager.PlaySFX(audioManager.jumpAudio);
+            }
+            //jump on grounded
+            else if(IsGrounded())
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 doubleJump = true;
+                audioManager.PlaySFX(audioManager.jumpAudio);
             }
             else if (IsWallTouch()) // jump wall
             {
                 wallJumping = true;
                 doubleJump = true;
                 Invoke("StopWallJump", wallJumpingDuration);
+                audioManager.PlaySFX(audioManager.jumpAudio);
             }
-            else if (doubleJump)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                jumpAudio.Play();
-                anim.SetTrigger("Double Jump");
-                doubleJump = false;
-            }
-            
+
+
         }
 
         if (dirX != 0)

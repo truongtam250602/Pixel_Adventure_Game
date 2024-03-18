@@ -7,6 +7,11 @@ public class ItemOrangeCollector : MonoBehaviour
 {
    private int oranges = 0;
    [SerializeField] private Text orangeText;
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Orange"))
@@ -15,6 +20,7 @@ public class ItemOrangeCollector : MonoBehaviour
             Destroy(collision.gameObject);
             oranges++;
             orangeText.text = oranges.ToString();
+            audioManager.PlaySFX(audioManager.collectOrangeAudio);
         }
     }
 }

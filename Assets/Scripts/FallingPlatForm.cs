@@ -18,7 +18,7 @@ public class FallingPlatForm : MonoBehaviour
         {
             return;
         }
-        if (collision.transform.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player") && collision.transform.position.y > transform.position.y)
         {
             StartCoroutine(Fall());
         }

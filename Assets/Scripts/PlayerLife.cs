@@ -7,12 +7,15 @@ public class PlayerLife : MonoBehaviour
 {
     public Animator anim;
     private Rigidbody2D rb;
-    [SerializeField] private int currentHealth;
-    [SerializeField] private int maxHealth = 3;
+    public static PlayerLife Instance;
+    [SerializeField] public int currentHealth;
+    [SerializeField] public int maxHealth = 3;
+    [SerializeField] private GameObject UILoseGame;
 
     AudioManager audioManager;
     private void Awake()
     {
+        Instance = this;
         currentHealth = maxHealth;
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
@@ -40,11 +43,15 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
-    private void Die()
+    private IEnumerator Die()
     {
-
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("Death");
+        audioManager.PlaySFX(audioManager.deathAudio);
+        yield return new WaitForSeconds(3f);
+        PlayerController.Instance.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        UILoseGame.SetActive(true);
+        yield return new WaitForSeconds(2f);
     }
 
     public void ChangeHealth(int value)
@@ -52,15 +59,17 @@ public class PlayerLife : MonoBehaviour
         if(value < 0)
         {
             anim.SetTrigger("Hit");
+            audioManager.PlaySFX(audioManager.hitAudio);
         }
         currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
-            Die();
+            StartCoroutine(ShakeCameraController.Instance.ShakeCamera());
+            StartCoroutine(Die());
         }
     }
 
-    private void RestartLevel()
+    public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         currentHealth = maxHealth;

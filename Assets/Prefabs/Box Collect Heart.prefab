@@ -996,7 +996,7 @@ MonoBehaviour:
   coll: {fileID: 1234649333962888683}
   brokenParts: {fileID: 6098847326912764925}
   lifes: 1
-  BoxCollider: {fileID: 517911475779124628}
+  boxCollider: {fileID: 517911475779124628}
   itemCollector: {fileID: 1923957097244052832}
 --- !u!1 &8135377246219361682
 GameObject:

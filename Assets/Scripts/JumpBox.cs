@@ -11,11 +11,12 @@ public class JumpBox : MonoBehaviour
     [SerializeField] private Collider2D coll;
     [SerializeField] private GameObject brokenParts;
     [SerializeField] private int lifes = 1;
-    [SerializeField] private GameObject BoxCollider;
+    [SerializeField] private GameObject boxCollider;
     [SerializeField] private GameObject? itemCollector;
-    void Start()
+    AudioManager audioManager;
+    private void Awake()
     {
-
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -39,19 +40,16 @@ public class JumpBox : MonoBehaviour
     {
         if(lifes <= 0)
         {
+            audioManager.PlaySFX(audioManager.breakAudio);
             brokenParts.SetActive(true);
-            BoxCollider.SetActive(false);
+            boxCollider.SetActive(false);
             coll.enabled = false;
             spRenderer.enabled = false;
-            DestroyBox();
+            Destroy(gameObject, 0.5f);
             if (!itemCollector.IsUnityNull())
             {
                 itemCollector.SetActive(true);
             }
         }
-    }
-    private void DestroyBox()
-    {
-        Destroy(gameObject, 0.5f);
     }
 }

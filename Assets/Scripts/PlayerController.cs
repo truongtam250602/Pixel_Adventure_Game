@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    public static PlayerController Instance;
     private Rigidbody2D rb;
     private BoxCollider2D coll;
     private Animator anim;
@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
@@ -63,8 +64,6 @@ public class PlayerController : MonoBehaviour
         MovementState state;
         dirX = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(dirX * speed, rb.velocity.y);
-
-        
 
         // wall jump set is Sliding value
         if(IsWallTouch() && !IsGrounded() && dirX != 0)

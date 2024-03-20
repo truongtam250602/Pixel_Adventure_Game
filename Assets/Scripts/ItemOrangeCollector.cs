@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class ItemOrangeCollector : MonoBehaviour
 {
-   private int oranges = 0;
+    public static ItemOrangeCollector Instance;
+   public int oranges = 0;
    [SerializeField] private Text orangeText;
     AudioManager audioManager;
     private void Awake()
     {
+        Instance = this;
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     private void OnTriggerEnter2D(Collider2D collision)

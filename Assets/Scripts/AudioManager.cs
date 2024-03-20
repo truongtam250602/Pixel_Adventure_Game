@@ -14,19 +14,30 @@ public class AudioManager : MonoBehaviour
     public AudioClip collectOrangeAudio;
     public AudioClip collectHeartAudio;
     public AudioClip trampolineAudio;
+    public AudioClip startGameAudio;
+    public AudioClip deathAudio;
+    public AudioClip hitAudio;
+    public AudioClip breakAudio;
+    public AudioClip slideWallAudio;
+    public AudioClip winGameAudio;
+    public AudioClip cannonAudio;
 
     void Start()
     {
         musicSource.clip = background;
         musicSource.Play();
+
+        PlaySFX(startGameAudio);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!musicSource.isPlaying)
+        {
+            musicSource.Play();
+        }
     }
-
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);

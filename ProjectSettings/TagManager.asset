@@ -11,6 +11,7 @@ TagManager:
   - Heart
   - Audio
   - Avatar
+  - Check Enemie
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Ground
   - Broken Box
   - Player
-  - 
+  - Enemies
   - 
   - 
   - 
@@ -56,4 +57,7 @@ TagManager:
     locked: 0
   - name: Terrain
     uniqueID: 3529680549
+    locked: 0
+  - name: Enemie
+    uniqueID: 3262773143
     locked: 0

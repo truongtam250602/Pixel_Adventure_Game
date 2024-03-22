@@ -6,7 +6,7 @@ public class BrokenBox : MonoBehaviour
 {
     void Start()
     {
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-8, 8), Random.Range(0, 5));
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-8, 8), Random.Range(0, 10));
         Destroy(gameObject,Random.Range(1f,2f));
     }
 }

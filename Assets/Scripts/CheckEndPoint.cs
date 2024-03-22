@@ -11,7 +11,7 @@ public class CheckEndPoint : MonoBehaviour
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -22,7 +22,6 @@ public class CheckEndPoint : MonoBehaviour
             UIWinGame.SetActive(true);
         }
     }
-
     IEnumerator EndEffectActive()
     {
         endEffect.Play();

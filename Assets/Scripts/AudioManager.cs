@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
     [Header("Audio Source")]
     [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource SFXSource;
+    [SerializeField] public AudioSource SFXSource;
 
     [Header("Audio Clip Player")]
     public AudioClip background;
@@ -22,6 +23,19 @@ public class AudioManager : MonoBehaviour
     public AudioClip winGameAudio;
     public AudioClip cannonAudio;
 
+    [Header("Audio Character")]
+    public AudioClip[] listCharacterAudio;
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else if(Instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
         musicSource.clip = background;

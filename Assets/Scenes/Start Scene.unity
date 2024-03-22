@@ -1286,6 +1286,7 @@ GameObject:
   - component: {fileID: 907822154}
   - component: {fileID: 907822153}
   - component: {fileID: 907822156}
+  - component: {fileID: 907822157}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1377,6 +1378,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a186f1fb9f47b2146a9b0b65ea3ce0e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &907822157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907822152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46b427febf86d94d8c1343a158fa71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1021639247
@@ -1547,7 +1560,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1296706040}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
           m_MethodName: PlaySFX
           m_Mode: 2
@@ -1563,7 +1576,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1296706040}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
           m_MethodName: PlaySFX
           m_Mode: 2
@@ -1785,7 +1798,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1296706041}
-  - component: {fileID: 1296706040}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Audio
@@ -1793,29 +1805,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1296706040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296706039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93705631d95ec194e86a3498c5cb19d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicSource: {fileID: 1202876314}
-  SFXSource: {fileID: 1021639248}
-  background: {fileID: 8300000, guid: 4a93402e48a9a644eb2407b0a8d9f6f4, type: 3}
-  jumpAudio: {fileID: 8300000, guid: 89883c5c7d97643c79378d29523584d0, type: 3}
-  collectOrangeAudio: {fileID: 8300000, guid: b14c4880ac119453497d1e90423d13e4, type: 3}
-  collectHeartAudio: {fileID: 8300000, guid: 49274dd43f2e6411fb6ce33a093a6683, type: 3}
-  trampolineAudio: {fileID: 8300000, guid: f84f0603837c84e1faa015c8a85f5832, type: 3}
-  deathAudio: {fileID: 8300000, guid: 6b79c01248cba1540bba8a806b1b979e, type: 3}
-  hitAudio: {fileID: 0}
-  breakAudio: {fileID: 0}
-  slideWallAudio: {fileID: 0}
 --- !u!4 &1296706041
 Transform:
   m_ObjectHideFlags: 0
@@ -1825,7 +1814,7 @@ Transform:
   m_GameObject: {fileID: 1296706039}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.540005, y: 5.914068, z: 7.469165}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2066,7 +2055,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1296706040}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
           m_MethodName: PlaySFX
           m_Mode: 2
@@ -2082,7 +2071,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1296706040}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
           m_MethodName: PlaySFX
           m_Mode: 2
@@ -2104,6 +2093,18 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 907822157}
+          m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+          m_MethodName: LoadScene
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Option Scene
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1598787296
@@ -2361,7 +2362,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1296706040}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
           m_MethodName: PlaySFX
           m_Mode: 2
@@ -2377,7 +2378,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1296706040}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
           m_MethodName: PlaySFX
           m_Mode: 2
@@ -2634,7 +2635,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1296706040}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
           m_MethodName: PlaySFX
           m_Mode: 2
@@ -2650,7 +2651,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1296706040}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
           m_MethodName: PlaySFX
           m_Mode: 2
@@ -2714,6 +2715,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: c5986ea7b2aed1c44b04bf2365e35ef8, type: 2}
+    - target: {fileID: 6398907054156806095, guid: c502d14670f6ea6449be5dc55305203d, type: 3}
+      propertyPath: m_fontStyle
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 6398907054156806095, guid: c502d14670f6ea6449be5dc55305203d, type: 3}
       propertyPath: m_TextStyleHashCode
       value: -1183493901

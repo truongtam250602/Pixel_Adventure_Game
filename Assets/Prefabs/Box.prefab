@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 5747730374640984378}
   - component: {fileID: 9047763911816562550}
   - component: {fileID: 1200239331200590832}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Box Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -5,20 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static SceneController Instance;
+    private void Awake()
     {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+    public void ExitGame()
+    {
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                Application.Quit();
+        #endif
     }
 }

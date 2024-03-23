@@ -12,6 +12,6 @@ public class CharacterJumpUI : MonoBehaviour
 
     void Idle()
     {
-        anim.Play("Idle");
+        anim.SetBool("Idle", true);
     }
 }

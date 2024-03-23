@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
 {
-    public Animator anim;
+    private Animator anim;
     private Rigidbody2D rb;
     public static PlayerLife Instance;
     [SerializeField] public int currentHealth;

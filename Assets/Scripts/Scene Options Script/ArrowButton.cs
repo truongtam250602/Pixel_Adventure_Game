@@ -12,7 +12,6 @@ public class ArrowButton : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.listCharacterAudio[0]);
     }
     public void ChooseBorder()
     {
@@ -25,19 +24,22 @@ public class ArrowButton : MonoBehaviour
     }
     public void ChooseCharacter(int amount)
     {
-        index = Mathf.Clamp(index + amount, 0, listCharater.Length-1);
-        for(int i=0; i<listCharater.Length; i++)
+        if((index == 0 && amount > 0) || (index == listCharater.Length-1 && amount<0) || (index >0 && index<listCharater.Length-1))
         {
-            if(i == index)
+            ChooseBorder();
+            index = Mathf.Clamp(index + amount, 0, listCharater.Length - 1);
+            for (int i = 0; i < listCharater.Length; i++)
             {
-                listCharater[i].SetActive(true);
-                AudioManager.Instance.SFXSource.Stop();
-                AudioManager.Instance.PlaySFX(AudioManager.Instance.listCharacterAudio[i]);
-                Debug.Log(i);
-            }
-            else
-            {
-                listCharater[i].SetActive(false);
+                if (i == index)
+                {
+                    listCharater[i].SetActive(true);
+                    AudioManager.Instance.SFXSource.Stop();
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.listCharacterAudio[i]);
+                }
+                else
+                {
+                    listCharater[i].SetActive(false);
+                }
             }
         }
     }

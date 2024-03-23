@@ -294,7 +294,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 594628155}
   - {fileID: 389190553}
   m_Father: {fileID: 1171912539}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10929,7 +10928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirY: 0
-  jumpForce: 12
+  jumpForce: 14
   speed: 10
   jumpableGround:
     serializedVersion: 2
@@ -10951,7 +10950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10707a86809b4e4dbb116caa6be1eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   currentHealth: 0
   maxHealth: 3
   UILoseGame: {fileID: 473495917}
@@ -11558,6 +11556,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1371651196}
+  - {fileID: 744521218}
   - {fileID: 1657005054}
   - {fileID: 1688661480}
   m_Father: {fileID: 1162902431}
@@ -11835,7 +11834,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.326645, y: 3.29999, z: -10}
+  m_LocalPosition: {x: 49.8, y: 3.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12277,7 +12276,7 @@ MonoBehaviour:
           m_MethodName: PlaySFX
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: a95e962efd0c67e4c940dd9e03e5d199, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 0b0599b563691b64ab61330ff8f4f733, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -12327,12 +12326,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1939017488}
-  m_Father: {fileID: 81733302}
+  m_Father: {fileID: 1171912539}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 105}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -22}
+  m_SizeDelta: {x: 480, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &594628156
 MonoBehaviour:
@@ -12544,7 +12543,7 @@ MonoBehaviour:
           m_MethodName: PlaySFX
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: a95e962efd0c67e4c940dd9e03e5d199, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 0b0599b563691b64ab61330ff8f4f733, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -12594,6 +12593,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 2068531063}
   SFXSource: {fileID: 1899436535}
+  clickedAudio: {fileID: 8300000, guid: 0b0599b563691b64ab61330ff8f4f733, type: 3}
+  hoverAudio: {fileID: 8300000, guid: 15aa8384dddfd4743888d23b4c0a16c4, type: 3}
   background: {fileID: 8300000, guid: 154de8083fb658441834e07072ecf294, type: 3}
   jumpAudio: {fileID: 8300000, guid: 66ea3c55a8334e84d82d20d3a4397874, type: 3}
   collectOrangeAudio: {fileID: 8300000, guid: 80747a5969f5ac84cbb1f731cac9c571, type: 3}
@@ -12606,6 +12607,7 @@ MonoBehaviour:
   slideWallAudio: {fileID: 8300000, guid: 53f7b6fb23ac1fc48990cb38237b1adf, type: 3}
   winGameAudio: {fileID: 8300000, guid: 920bc2ff0df89e2448fc4bc99e70a0ba, type: 3}
   cannonAudio: {fileID: 8300000, guid: a593543386030864fb25b2f0276ee96a, type: 3}
+  listCharacterAudio: []
 --- !u!4 &609392732
 Transform:
   m_ObjectHideFlags: 0
@@ -12999,12 +13001,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2138729949}
-  m_Father: {fileID: 1371651196}
+  m_Father: {fileID: 473495918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 105}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -22}
+  m_SizeDelta: {x: 480, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &744521219
 MonoBehaviour:
@@ -13830,7 +13832,7 @@ MonoBehaviour:
           m_MethodName: PlaySFX
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: a95e962efd0c67e4c940dd9e03e5d199, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 0b0599b563691b64ab61330ff8f4f733, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -14701,7 +14703,7 @@ MonoBehaviour:
           m_MethodName: PlaySFX
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: a95e962efd0c67e4c940dd9e03e5d199, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 0b0599b563691b64ab61330ff8f4f733, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -14879,6 +14881,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 81733302}
+  - {fileID: 594628155}
   - {fileID: 1900967805}
   - {fileID: 2117097954}
   m_Father: {fileID: 1162902431}
@@ -15824,7 +15827,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 744521218}
   - {fileID: 1059996486}
   m_Father: {fileID: 473495918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30182,7 +30184,7 @@ MonoBehaviour:
           m_MethodName: PlaySFX
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: a95e962efd0c67e4c940dd9e03e5d199, type: 3}
+            m_ObjectArgument: {fileID: 8300000, guid: 0b0599b563691b64ab61330ff8f4f733, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0

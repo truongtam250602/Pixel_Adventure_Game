@@ -9,6 +9,7 @@ public class ArrowButton : MonoBehaviour
     [SerializeField] private GameObject[] listCharater;
     private Animator anim;
     private int index = 0;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -35,6 +36,7 @@ public class ArrowButton : MonoBehaviour
                     listCharater[i].SetActive(true);
                     AudioManager.Instance.SFXSource.Stop();
                     AudioManager.Instance.PlaySFX(AudioManager.Instance.listCharacterAudio[i]);
+                    PlayerPrefs.SetString("Character", listCharater[i].name);
                 }
                 else
                 {

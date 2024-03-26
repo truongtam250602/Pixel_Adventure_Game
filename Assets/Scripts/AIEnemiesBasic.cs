@@ -17,7 +17,6 @@ public class AIEnemiesBasic : MonoBehaviour
         waitTime = delayTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
         TransformAuto();

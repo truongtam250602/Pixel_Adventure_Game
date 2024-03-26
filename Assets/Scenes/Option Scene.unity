@@ -788,7 +788,7 @@ GameObject:
   - component: {fileID: 289938388}
   - component: {fileID: 289938390}
   m_Layer: 5
-  m_Name: Mask Dude
+  m_Name: Mask Dude Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1100,7 +1100,7 @@ GameObject:
   - component: {fileID: 325603136}
   - component: {fileID: 325603138}
   m_Layer: 5
-  m_Name: Ninja Fog
+  m_Name: Ninja Fog Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1697,10 +1697,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1000, y: 800}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1717,8 +1717,8 @@ Canvas:
   m_GameObject: {fileID: 689241639}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 530416090}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2578,7 +2578,7 @@ GameObject:
   - component: {fileID: 1386607531}
   - component: {fileID: 1386607533}
   m_Layer: 5
-  m_Name: Pink Man
+  m_Name: Pink Man Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2946,7 +2946,7 @@ GameObject:
   - component: {fileID: 1477994502}
   - component: {fileID: 1477994504}
   m_Layer: 5
-  m_Name: Virtual Guy
+  m_Name: Virtual Guy Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3497,7 +3497,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  yCurveScaling: 5
+  yCurveScaling: 0
 --- !u!114 &1638167062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4400,6 +4400,7 @@ MonoBehaviour:
   SFXSource: {fileID: 1223110417}
   clickedAudio: {fileID: 8300000, guid: 0b0599b563691b64ab61330ff8f4f733, type: 3}
   hoverAudio: {fileID: 8300000, guid: 15aa8384dddfd4743888d23b4c0a16c4, type: 3}
+  pressedAudio: {fileID: 0}
   background: {fileID: 8300000, guid: aeedb75fc99ab6042a7d64f5ff514325, type: 3}
   jumpAudio: {fileID: 0}
   collectOrangeAudio: {fileID: 0}

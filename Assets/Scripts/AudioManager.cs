@@ -11,7 +11,10 @@ public class AudioManager : MonoBehaviour
 
     [Header("Button Audio")]
     [SerializeField] private AudioClip clickedAudio;
-    [SerializeField] private AudioClip hoverAudio   ;
+    [SerializeField] private AudioClip hoverAudio;
+
+    [Header("Text Audio")]
+    [SerializeField] public AudioClip pressedAudio;
    
     [Header("Audio Clip Player")]
     public AudioClip background;
